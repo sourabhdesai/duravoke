@@ -54,6 +54,7 @@ class Duravokable:
             token = duravoke_context.parent_invocation_key.set(invocation_key)
             try:
                 result = self.callable(*args, **kwargs)
+                # support both sync and async functions
                 if inspect.isawaitable(result):
                     result = await result
                 serialized_result = await serializer.serialize(result)

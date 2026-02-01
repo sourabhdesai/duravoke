@@ -33,9 +33,9 @@ class PydanticSerializer(Serializer[PydanticT]):
         self.model = model
 
     async def serialize(self, value: PydanticT) -> str:
-        json_val = value.model_dump_json()
-        return JSONSerializer().serialize(json_val)
+        json_val = value.model_dump(mode="json")
+        return await JSONSerializer().serialize(json_val)
 
     async def deserialize(self, serialized_value: str) -> PydanticT:
-        json_val = JSONSerializer().deserialize(serialized_value)
-        return self.model.model_validate_json(json_val)
+        json_val = await JSONSerializer().deserialize(serialized_value)
+        return self.model.model_validate(json_val)

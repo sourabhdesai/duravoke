@@ -1,7 +1,5 @@
 import random
 
-import pytest
-
 from src.duravoke import Duravoke
 from src.duravokable import Duravokable
 from src.duravoke_context import DuravokeContext
@@ -9,7 +7,6 @@ from src.kv import InMemoryKKV
 from src.serializer import JSONSerializer
 
 
-@pytest.mark.asyncio
 async def test_simple_flow() -> None:
     kv = InMemoryKKV()
     duravoke = Duravoke(kv, JSONSerializer())
@@ -42,7 +39,6 @@ async def test_simple_flow() -> None:
     assert num_attempts >= 1, "num_attempts should be at least 1"
 
 
-@pytest.mark.asyncio
 async def test_complex_flow() -> None:
     kv = InMemoryKKV()
     duravoke = Duravoke(kv, JSONSerializer())
@@ -109,7 +105,6 @@ async def test_complex_flow() -> None:
     assert num_attempts >= 1, "num_attempts should be at least 1"
 
 
-@pytest.mark.asyncio
 async def test_randomized_order_changes_break_cache() -> None:
     """
     This test checks that when the order of tasks is randomized, the cache is broken.
@@ -164,7 +159,6 @@ async def test_randomized_order_changes_break_cache() -> None:
     assert counters == {"alpha": 3, "bravo": 3, "charlie": 3, "delta": 3}
 
 
-@pytest.mark.asyncio
 async def test_duravokable_sync_callable_cached() -> None:
     kv = InMemoryKKV()
     serializer = JSONSerializer()
