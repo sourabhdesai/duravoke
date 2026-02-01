@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "duravoke"
-version = "0.1.0"
+version = "0.1.1"
 description = "A mini durable execution library, with an extreme focus on simplicity"
 readme = "README.md"
 requires-python = ">=3.9"
