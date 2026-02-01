@@ -1,19 +1,16 @@
 .PHONY: test build clean publish publish-test install
 
 test:
-	.venv/bin/python -m pytest tests/ -v
+	uv run pytest tests/ -v
 
 build: clean
-	.venv/bin/python -m build
+	uv run python -m build
 
 clean:
 	rm -rf dist/ build/ *.egg-info
 
-install:
-	uv pip install -e .
-
 publish-test: build
-	uvx twine upload --repository testpypi dist/*
+	uv run twine upload --repository testpypi dist/*
 
 publish: build
-	uvx twine upload dist/*
+	uv run twine upload dist/*
