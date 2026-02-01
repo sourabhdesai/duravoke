@@ -15,6 +15,14 @@ publish-test: build
 publish: build
 	uv run twine upload dist/*
 
+bump_patch:
+	@CURRENT_VERSION=$$(uv run python -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])"); \
+	uv run bump2version --current-version $$CURRENT_VERSION --no-tag --no-commit patch pyproject.toml
+
 bump_minor:
 	@CURRENT_VERSION=$$(uv run python -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])"); \
 	uv run bump2version --current-version $$CURRENT_VERSION --no-tag --no-commit minor pyproject.toml
+
+bump_major:
+	@CURRENT_VERSION=$$(uv run python -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])"); \
+	uv run bump2version --current-version $$CURRENT_VERSION --no-tag --no-commit major pyproject.toml
