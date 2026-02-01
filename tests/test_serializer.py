@@ -1,4 +1,4 @@
-from src.serializer import JSONSerializer
+from duravoke import JSONSerializer
 
 async def test_json_serializer_roundtrip() -> None:
     serializer = JSONSerializer()

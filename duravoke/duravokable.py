@@ -1,9 +1,9 @@
 import inspect
 from typing import Callable, Coroutine, Any, TypeVar
-from src.duravoke_context import DuravokeContext
-from src.utils.methods import positional_arguments
-from src.kv import KeyedKeyValues
-from src.serializer import Serializer
+from duravoke.duravoke_context import DuravokeContext
+from duravoke.utils.methods import positional_arguments
+from duravoke.kv import KeyedKeyValues
+from duravoke.serializer import Serializer
 
 T = TypeVar('T')
 

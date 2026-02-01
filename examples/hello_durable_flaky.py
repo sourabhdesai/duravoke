@@ -1,9 +1,7 @@
 import asyncio
 import time
 import random
-from src.duravoke import Duravoke
-from src.kv import PersistedKKV
-from src.serializer import JSONSerializer
+from duravoke import Duravoke, PersistedKKV, JSONSerializer
 
 kv = PersistedKKV("./duravoke_state.json")
 duravoke = Duravoke(kv, JSONSerializer())

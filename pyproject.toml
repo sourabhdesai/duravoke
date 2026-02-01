@@ -1,10 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "duravoke"
 version = "0.1.0"
-description = "Add your description here"
+description = "A mini durable execution library, with an extreme focus on simplicity"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.9"
 dependencies = []
+authors = [
+    { name = "Sourabh Desai" }
+]
+keywords = ["durable execution", "workflow", "async", "idempotency"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+[project.urls]
+Homepage = "https://github.com/sourabhdesai/duravoke"
+Repository = "https://github.com/sourabhdesai/duravoke"
+
+[tool.hatch.build.targets.wheel]
+packages = ["duravoke"]
 
 [dependency-groups]
 dev = [

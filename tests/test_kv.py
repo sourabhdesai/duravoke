@@ -1,7 +1,6 @@
 import pytest
 
-from src.kv import InMemoryKKV, PersistedKKV
-from src.serializer import JSONSerializer, Serializer
+from duravoke import InMemoryKKV, PersistedKKV, JSONSerializer, Serializer
 
 
 @pytest.mark.parametrize(

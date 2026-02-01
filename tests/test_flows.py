@@ -1,8 +1,6 @@
 import random
 import asyncio
-from src.duravoke import Duravoke
-from src.kv import InMemoryKKV
-from src.serializer import JSONSerializer
+from duravoke import Duravoke, InMemoryKKV, JSONSerializer
 
 
 async def test_simple_flow() -> None:

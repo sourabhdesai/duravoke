@@ -1,9 +1,9 @@
 from typing import Any
 from typing import Callable, TypeVar, Coroutine
-from src.kv import KeyedKeyValues
-from src.serializer import Serializer
-from src.duravoke_context import DuravokeContext
-from src.duravokable import Duravokable
+from duravoke.kv import KeyedKeyValues
+from duravoke.serializer import Serializer
+from duravoke.duravoke_context import DuravokeContext
+from duravoke.duravokable import Duravokable
 
 T = TypeVar('T')
 
