@@ -163,7 +163,7 @@ The below logs show an example of running `python hello_durable_flaky.py` 3 time
 
 Note how when a email was sent to a user in one run, it logs a timestamp. In subsequent runs, that **same timestamp** is logged. The user isn't sent a duplicate email.
 
-Each run of [`hello_durable_flaky.py`](./examples/hello_durable_flaky.py) becomes idempotent based on the last run. Moreover, this idempotency is completely abstracted away for you the user. All you needed to do is add the `@duravoke.duravoke` decorators.
+Each run of [`hello_durable_flaky.py`](./examples/hello_durable_flaky.py) becomes idempotent based on the last run. Moreover, this idempotency is completely abstracted away for you the developer. All you need to do is add the `@duravoke.duravoke` decorators.
 
 ## How do I use this IRL?
 
