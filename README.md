@@ -90,61 +90,61 @@ The below logs show an example of running `python hello_durable_flaky.py` 3 time
 <table>
   <thead>
     <tr>
-      <th><span style="color:#2b6cb0;">Run 1</span></th>
-      <th><span style="color:#2f855a;">Run 2</span></th>
-      <th><span style="color:#6b46c1;">Run 3 (all emails sent)</span></th>
+      <th><img alt="Run 1 (blue)" src="https://img.shields.io/badge/Run%201-blue?style=flat-square" /></th>
+      <th><img alt="Run 2 (green)" src="https://img.shields.io/badge/Run%202-green?style=flat-square" /></th>
+      <th><img alt="Run 3 (purple)" src="https://img.shields.io/badge/Run%203%20(all%20emails%20sent)-purple?style=flat-square" /></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Sent email to user_id: 0 at <span style="color:#2b6cb0;">1769848541</span></td>
-      <td>Sent email to user_id: 0 at <span style="color:#2b6cb0;">1769848541</span></td>
-      <td>Sent email to user_id: 0 at <span style="color:#2b6cb0;">1769848541</span></td>
+      <td>Sent email to user_id: 0 at <img alt="1769848541 (blue)" src="https://img.shields.io/badge/1769848541-blue?style=flat-square" /></td>
+      <td>Sent email to user_id: 0 at <img alt="1769848541 (blue)" src="https://img.shields.io/badge/1769848541-blue?style=flat-square" /></td>
+      <td>Sent email to user_id: 0 at <img alt="1769848541 (blue)" src="https://img.shields.io/badge/1769848541-blue?style=flat-square" /></td>
     </tr>
     <tr>
-      <td>Sent email to user_id: 1 at <span style="color:#2b6cb0;">1769848541</span></td>
-      <td>Sent email to user_id: 1 at <span style="color:#2b6cb0;">1769848541</span></td>
-      <td>Sent email to user_id: 1 at <span style="color:#2b6cb0;">1769848541</span></td>
+      <td>Sent email to user_id: 1 at <img alt="1769848541 (blue)" src="https://img.shields.io/badge/1769848541-blue?style=flat-square" /></td>
+      <td>Sent email to user_id: 1 at <img alt="1769848541 (blue)" src="https://img.shields.io/badge/1769848541-blue?style=flat-square" /></td>
+      <td>Sent email to user_id: 1 at <img alt="1769848541 (blue)" src="https://img.shields.io/badge/1769848541-blue?style=flat-square" /></td>
     </tr>
     <tr>
-      <td>Sent email to user_id: 2 at <span style="color:#2b6cb0;">1769848541</span></td>
-      <td>Sent email to user_id: 2 at <span style="color:#2b6cb0;">1769848541</span></td>
-      <td>Sent email to user_id: 2 at <span style="color:#2b6cb0;">1769848541</span></td>
+      <td>Sent email to user_id: 2 at <img alt="1769848541 (blue)" src="https://img.shields.io/badge/1769848541-blue?style=flat-square" /></td>
+      <td>Sent email to user_id: 2 at <img alt="1769848541 (blue)" src="https://img.shields.io/badge/1769848541-blue?style=flat-square" /></td>
+      <td>Sent email to user_id: 2 at <img alt="1769848541 (blue)" src="https://img.shields.io/badge/1769848541-blue?style=flat-square" /></td>
     </tr>
     <tr>
-      <td>Sent email to user_id: 3 at <span style="color:#2b6cb0;">1769848541</span></td>
-      <td>Sent email to user_id: 3 at <span style="color:#2b6cb0;">1769848541</span></td>
-      <td>Sent email to user_id: 3 at <span style="color:#2b6cb0;">1769848541</span></td>
+      <td>Sent email to user_id: 3 at <img alt="1769848541 (blue)" src="https://img.shields.io/badge/1769848541-blue?style=flat-square" /></td>
+      <td>Sent email to user_id: 3 at <img alt="1769848541 (blue)" src="https://img.shields.io/badge/1769848541-blue?style=flat-square" /></td>
+      <td>Sent email to user_id: 3 at <img alt="1769848541 (blue)" src="https://img.shields.io/badge/1769848541-blue?style=flat-square" /></td>
     </tr>
     <tr>
       <td>crash 🔥</td>
-      <td>Sent email to user_id: 4 at <span style="color:#2f855a;">1769848547</span></td>
-      <td>Sent email to user_id: 4 at <span style="color:#2f855a;">1769848547</span></td>
+      <td>Sent email to user_id: 4 at <img alt="1769848547 (green)" src="https://img.shields.io/badge/1769848547-green?style=flat-square" /></td>
+      <td>Sent email to user_id: 4 at <img alt="1769848547 (green)" src="https://img.shields.io/badge/1769848547-green?style=flat-square" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
-      <td>Sent email to user_id: 5 at <span style="color:#2f855a;">1769848547</span></td>
-      <td>Sent email to user_id: 5 at <span style="color:#2f855a;">1769848547</span></td>
+      <td>Sent email to user_id: 5 at <img alt="1769848547 (green)" src="https://img.shields.io/badge/1769848547-green?style=flat-square" /></td>
+      <td>Sent email to user_id: 5 at <img alt="1769848547 (green)" src="https://img.shields.io/badge/1769848547-green?style=flat-square" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
-      <td>Sent email to user_id: 6 at <span style="color:#2f855a;">1769848547</span></td>
-      <td>Sent email to user_id: 6 at <span style="color:#2f855a;">1769848547</span></td>
+      <td>Sent email to user_id: 6 at <img alt="1769848547 (green)" src="https://img.shields.io/badge/1769848547-green?style=flat-square" /></td>
+      <td>Sent email to user_id: 6 at <img alt="1769848547 (green)" src="https://img.shields.io/badge/1769848547-green?style=flat-square" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>crash 🔥</td>
-      <td>Sent email to user_id: 7 at <span style="color:#6b46c1;">1769848552</span></td>
+      <td>Sent email to user_id: 7 at <img alt="1769848552 (purple)" src="https://img.shields.io/badge/1769848552-purple?style=flat-square" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td>Sent email to user_id: 8 at <span style="color:#6b46c1;">1769848552</span></td>
+      <td>Sent email to user_id: 8 at <img alt="1769848552 (purple)" src="https://img.shields.io/badge/1769848552-purple?style=flat-square" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td>Sent email to user_id: 9 at <span style="color:#6b46c1;">1769848552</span></td>
+      <td>Sent email to user_id: 9 at <img alt="1769848552 (purple)" src="https://img.shields.io/badge/1769848552-purple?style=flat-square" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
