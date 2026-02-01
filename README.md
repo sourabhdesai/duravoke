@@ -87,19 +87,72 @@ Now, while the above code still has a high chance of failure, subsequent reruns 
 The below logs show an example of running `python hello_durable_flaky.py` 3 times.
 
 
-| Run 1 | Run 2 | Run 3 (all emails sent) |
-| --- | --- | --- |
-| Sent email to user_id: 0 at 1769848541 | Sent email to user_id: 0 at 1769848541 | Sent email to user_id: 0 at 1769848541 |
-| Sent email to user_id: 1 at 1769848541 | Sent email to user_id: 1 at 1769848541 | Sent email to user_id: 1 at 1769848541 |
-| Sent email to user_id: 2 at 1769848541 | Sent email to user_id: 2 at 1769848541 | Sent email to user_id: 2 at 1769848541 |
-| Sent email to user_id: 3 at 1769848541 | Sent email to user_id: 3 at 1769848541 | Sent email to user_id: 3 at 1769848541 |
-| crash 🔥 | Sent email to user_id: 4 at 1769848547 | Sent email to user_id: 4 at 1769848547 |
-|  | Sent email to user_id: 5 at 1769848547 | Sent email to user_id: 5 at 1769848547 |
-|  | Sent email to user_id: 6 at 1769848547 | Sent email to user_id: 6 at 1769848547 |
-|  | crash 🔥 | Sent email to user_id: 7 at 1769848552 |
-|  |  | Sent email to user_id: 8 at 1769848552 |
-|  |  | Sent email to user_id: 9 at 1769848552 |
-|  |  | finished 😎 |
+<table>
+  <thead>
+    <tr>
+      <th><span style="color:#2b6cb0;">Run 1</span></th>
+      <th><span style="color:#2f855a;">Run 2</span></th>
+      <th><span style="color:#6b46c1;">Run 3 (all emails sent)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sent email to user_id: 0 at <span style="color:#2b6cb0;">1769848541</span></td>
+      <td>Sent email to user_id: 0 at <span style="color:#2b6cb0;">1769848541</span></td>
+      <td>Sent email to user_id: 0 at <span style="color:#2b6cb0;">1769848541</span></td>
+    </tr>
+    <tr>
+      <td>Sent email to user_id: 1 at <span style="color:#2b6cb0;">1769848541</span></td>
+      <td>Sent email to user_id: 1 at <span style="color:#2b6cb0;">1769848541</span></td>
+      <td>Sent email to user_id: 1 at <span style="color:#2b6cb0;">1769848541</span></td>
+    </tr>
+    <tr>
+      <td>Sent email to user_id: 2 at <span style="color:#2b6cb0;">1769848541</span></td>
+      <td>Sent email to user_id: 2 at <span style="color:#2b6cb0;">1769848541</span></td>
+      <td>Sent email to user_id: 2 at <span style="color:#2b6cb0;">1769848541</span></td>
+    </tr>
+    <tr>
+      <td>Sent email to user_id: 3 at <span style="color:#2b6cb0;">1769848541</span></td>
+      <td>Sent email to user_id: 3 at <span style="color:#2b6cb0;">1769848541</span></td>
+      <td>Sent email to user_id: 3 at <span style="color:#2b6cb0;">1769848541</span></td>
+    </tr>
+    <tr>
+      <td>crash 🔥</td>
+      <td>Sent email to user_id: 4 at <span style="color:#2f855a;">1769848547</span></td>
+      <td>Sent email to user_id: 4 at <span style="color:#2f855a;">1769848547</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>Sent email to user_id: 5 at <span style="color:#2f855a;">1769848547</span></td>
+      <td>Sent email to user_id: 5 at <span style="color:#2f855a;">1769848547</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>Sent email to user_id: 6 at <span style="color:#2f855a;">1769848547</span></td>
+      <td>Sent email to user_id: 6 at <span style="color:#2f855a;">1769848547</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>crash 🔥</td>
+      <td>Sent email to user_id: 7 at <span style="color:#6b46c1;">1769848552</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Sent email to user_id: 8 at <span style="color:#6b46c1;">1769848552</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Sent email to user_id: 9 at <span style="color:#6b46c1;">1769848552</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>finished 😎</td>
+    </tr>
+  </tbody>
+</table>
 
 
 Note how when a email was sent to a user in one run, it logs a timestamp. In subsequent runs, that **same timestamp** is logged. The user isn't sent a duplicate email.
