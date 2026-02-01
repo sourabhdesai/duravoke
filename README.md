@@ -2,6 +2,12 @@
 
 A (experimental) mini durable execution library, with an extreme focus on simplicity.
 
+## Install
+
+via pip: `pip install duravoke`
+
+via uv: `uv add duravoke`
+
 ## What is Durable Execution?
 
 While there are already [great answers to this question](https://temporal.io/blog/what-is-durable-execution), the simplest definition is this:
