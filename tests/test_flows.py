@@ -1,13 +1,12 @@
 import random
-
+import asyncio
 from src.duravoke import Duravoke
-from src.duravokable import Duravokable
-from src.duravoke_context import DuravokeContext
 from src.kv import InMemoryKKV
 from src.serializer import JSONSerializer
 
 
 async def test_simple_flow() -> None:
+    """Retries preserve previously cached results."""
     kv = InMemoryKKV()
     duravoke = Duravoke(kv, JSONSerializer())
 
@@ -40,6 +39,7 @@ async def test_simple_flow() -> None:
 
 
 async def test_complex_flow() -> None:
+    """Repeated nested calls resume without losing earlier results."""
     kv = InMemoryKKV()
     duravoke = Duravoke(kv, JSONSerializer())
 
@@ -106,11 +106,7 @@ async def test_complex_flow() -> None:
 
 
 async def test_randomized_order_changes_break_cache() -> None:
-    """
-    This test checks that when the order of tasks is randomized, the cache is broken.
-    This is because the cache is keyed by the order of tasks, so if the order is randomized,
-    the cache will be broken.
-    """
+    """Changing call order yields different cached outputs."""
     kv = InMemoryKKV()
     duravoke = Duravoke(kv, JSONSerializer())
     counters: dict[str, int] = {"alpha": 0, "bravo": 0, "charlie": 0, "delta": 0}
@@ -160,20 +156,47 @@ async def test_randomized_order_changes_break_cache() -> None:
 
 
 async def test_duravokable_sync_callable_cached() -> None:
+    """Sync callables are cached after the first run."""
     kv = InMemoryKKV()
-    serializer = JSONSerializer()
-    context = DuravokeContext()
+    duravoke = Duravoke(kv, JSONSerializer())
     call_count = {"count": 0}
 
+    @duravoke.duravoke
     def sync_task() -> str:
         call_count["count"] += 1
         return f"sync:{call_count['count']}"
 
-    duravokable = Duravokable(sync_task, context, serializer, kv)
-
-    first = await duravokable()
-    second = await duravokable()
+    first = await sync_task()
+    second = await sync_task()
 
     assert first == "sync:1"
     assert second == "sync:1"
     assert call_count["count"] == 1
+
+
+async def test_asyncio_gather() -> None:
+    """Concurrent awaits share the same cached result."""
+    kv = InMemoryKKV()
+    duravoke = Duravoke(kv, JSONSerializer())
+
+    should_raise = False
+
+    @duravoke.duravoke
+    async def times_two(x: int) -> int:
+        nonlocal should_raise
+        if should_raise:
+            raise RuntimeError("times_two failed")
+        return x * 2
+
+    @duravoke.duravoke
+    async def map_tasks(numbers: list[int]) -> list[int]:
+        return await asyncio.gather(*(times_two(number) for number in numbers))
+
+    numbers = list(range(10))
+    results = await map_tasks(numbers)
+    assert results == [n * 2 for n in numbers]
+
+    should_raise = True
+    # should not raise, should return the cached result
+    results = await map_tasks(numbers)
+    assert results == [n * 2 for n in numbers]

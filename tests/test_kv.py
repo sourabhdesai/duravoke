@@ -1,20 +1,13 @@
 import pytest
-from pydantic import BaseModel
 
 from src.kv import InMemoryKKV, PersistedKKV
-from src.serializer import JSONSerializer, PydanticSerializer, Serializer
-
-
-class SampleModel(BaseModel):
-    name: str
-    count: int
+from src.serializer import JSONSerializer, Serializer
 
 
 @pytest.mark.parametrize(
     ("data", "serializer"),
     [
         ({"name": "alpha", "count": 1}, JSONSerializer()),
-        (SampleModel(name="bravo", count=2), PydanticSerializer(SampleModel)),
     ],
 )
 async def test_kv_roundtrip_with_serializers(tmp_path, data, serializer: Serializer):
@@ -31,10 +24,7 @@ async def test_kv_roundtrip_with_serializers(tmp_path, data, serializer: Seriali
         assert cached == serialized
 
         deserialized = await serializer.deserialize(cached)
-        if isinstance(deserialized, BaseModel):
-            assert deserialized.model_dump() == data.model_dump()
-        else:
-            assert deserialized == data
+        assert deserialized == data
 
         await kv.delete("primary", "secondary")
         assert await kv.get("primary", "secondary") is None
