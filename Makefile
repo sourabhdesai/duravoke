@@ -1,4 +1,4 @@
-.PHONY: test build clean publish publish-test install
+.PHONY: test build clean publish publish-test install bump_minor
 
 test:
 	uv run pytest tests/ -v
@@ -14,3 +14,7 @@ publish-test: build
 
 publish: build
 	uv run twine upload dist/*
+
+bump_minor:
+	@CURRENT_VERSION=$$(uv run python -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])"); \
+	uv run bump2version --current-version $$CURRENT_VERSION --no-tag --no-commit minor pyproject.toml
